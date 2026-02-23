@@ -1,0 +1,6 @@
+EquipmentId,PatientId,RoomId,EquipmentType,MonitoringStartDate
+VS-1001,1001,1,Continuous Monitoring,2026-02-01
+VS-1002,1002,2,Continuous Monitoring,2026-02-01
+VS-1003,1003,3,Continuous Monitoring,2026-02-01
+VS-1004,1004,7,Continuous Monitoring,2026-02-01
+VS-1005,1005,8,Continuous Monitoring,2026-02-01

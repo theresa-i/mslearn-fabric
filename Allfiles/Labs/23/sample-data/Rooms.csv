@@ -1,0 +1,11 @@
+RoomId,RoomNumber,DepartmentId,RoomType
+1,ICU-301,1,Critical Care
+2,ICU-302,1,Critical Care
+3,ICU-303,1,Critical Care
+4,ER-101,2,Emergency
+5,ER-102,2,Emergency
+6,ER-103,2,Emergency
+7,SUR-201,3,Post-Op
+8,SUR-202,3,Post-Op
+9,SUR-203,3,Post-Op
+10,SUR-204,3,Post-Op

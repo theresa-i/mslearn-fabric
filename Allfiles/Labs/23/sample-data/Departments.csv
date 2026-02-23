@@ -1,0 +1,4 @@
+DepartmentId,DepartmentName,HospitalId,Floor
+1,Intensive Care Unit,1,3
+2,Emergency Department,1,1
+3,Surgical Services,1,2
