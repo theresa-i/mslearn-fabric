@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Build an ontology manually in Microsoft Fabric'
+    title: 'Create an ontology directly from OneLake'
     module: 'Create ontology with Microsoft Fabric IQ'
 ---
 
-# Build an ontology manually in Microsoft Fabric
+# Create an ontology directly from OneLake
 
 In this lab, you'll create a complete Fabric IQ ontology for a healthcare company by manually building each component—entity types, properties, keys, relationships, and data bindings. You'll work with hospital operations data including hospitals, departments, rooms, and patients, plus streaming vital signs monitoring data.
 
