@@ -37,7 +37,10 @@ Now you'll create a lakehouse and load hospital operations data that will form t
 
 You'll download all sample data files, upload five CSV files to the lakehouse containing entity data for hospitals, departments, rooms, patients, and vital sign monitors, then convert each file to a table.
 
-1. Download all sample CSV files from the [sample-data folder](../../Allfiles/Labs/23/sample-data/):
+1. Download all sample CSV files from the GitHub repository: [sample-data folder](https://github.com/MicrosoftLearning/mslearn-fabric/tree/main/Allfiles/Labs/23/sample-data).
+
+   It contains the following sample CSV files:
+   
    - **Hospitals.csv** - Healthcare facilities in your network
    - **Departments.csv** - Hospital departments (ICU, Emergency, Surgical)
    - **Rooms.csv** - Individual rooms within departments
