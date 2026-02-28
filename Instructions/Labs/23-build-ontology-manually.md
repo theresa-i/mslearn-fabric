@@ -10,9 +10,7 @@ In this lab, you'll create a complete Fabric IQ ontology for a fictitious health
 
 This lab takes approximately **40-45** minutes to complete.
 
-> **Note**: You need a [Microsoft Fabric trial](https://learn.microsoft.com/fabric/get-started/fabric-trial) to complete this exercise.
->
-> To complete this exercise, you'll need to enable the following [tenant settings](https://learn.microsoft.com/fabric/iq/ontology/overview-tenant-settings):
+> **Note**: You need a [Microsoft Fabric trial](https://learn.microsoft.com/fabric/get-started/fabric-trial) to complete this exercise. You'll also need to enable the following [tenant settings](https://learn.microsoft.com/fabric/iq/ontology/overview-tenant-settings):
 > - **Enable Ontology item (preview)**
 > - **User can create Graph (preview)**
 
