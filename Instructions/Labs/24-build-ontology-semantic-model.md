@@ -1,37 +1,30 @@
 ---
 lab:
-    title: 'Build an ontology (preview) from a semantic model in Microsoft Fabric'
+    title: 'Build an ontology (preview) from a semantic model in Fabric IQ'
     module: 'Create ontology with Microsoft Fabric IQ'
 ---
 
-# Build an ontology (preview) from a semantic model in Microsoft Fabric
+# Build an ontology (preview) from a semantic model in Fabric IQ
 
 There are two ways to build a Fabric IQ ontology: manually, by creating each entity type and relationship from scratch, or automatically, by generating the structure from a Power BI semantic model. This lab uses the semantic model approach.
 
-In a real-world scenario, your organization likely already has data in OneLake and a semantic model built on top of it — and you'd simply point the ontology generator at that existing model. In this lab, you'll load the data and build the semantic model yourself, so you can see exactly how the structure you define becomes the ontology. In this exercise, every table becomes an entity type, and every relationship between tables becomes a relationship type.
-
-You'll work with sample hospital operations data including hospitals, departments, rooms, patients, and vital sign equipment, plus streaming vital signs monitoring data from an eventhouse.
+In this lab, you'll load sample data for a fictitious healthcare company into a lakehouse and eventhouse, build a semantic model on top of it, and then generate an ontology from that model. The sample data includes facilities, departments, rooms, individuals, and medical equipment. Each table in the semantic model becomes an entity type, and each relationship between tables becomes a relationship type in the ontology.
 
 This lab takes approximately **35-40** minutes to complete.
 
-> **Note**: To complete this exercise, you need a workspace with one of the three [Fabric workspace types](https://learn.microsoft.com/fabric/enterprise/licenses#workspace-license-modes):
-> - **Fabric** – backed by a purchased Fabric capacity (F SKU), available through the Azure portal
-> - **Fabric Trial** – a free 60-day trial capacity; sign up at [aka.ms/fabric-trial](https://learn.microsoft.com/fabric/get-started/fabric-trial)
-> - **Power BI Premium** – a Power BI Premium per-capacity (P SKU) with Fabric enabled
+> **Note**: You need a [Microsoft Fabric trial](https://learn.microsoft.com/fabric/get-started/fabric-trial) to complete this exercise.
 >
-> When you create a workspace, select one of these types from the **Workspace type** dropdown. If you're not sure which you have, choose **Fabric Trial**.
->
-> You'll also need to enable the following [tenant settings](https://learn.microsoft.com/fabric/iq/ontology/overview-tenant-settings):
+> To complete this exercise, you'll need to enable the following [tenant settings](https://learn.microsoft.com/fabric/iq/ontology/overview-tenant-settings):
 > - **Enable Ontology item (preview)**
 > - **User can create Graph (preview)**
 
 ## Create a workspace
 
-Before working with ontologies in Fabric, create a workspace to use for this lab.
+Before working with ontologies in Fabric, you need a workspace with a Fabric capacity.
 
 1. Navigate to the [Microsoft Fabric home page](https://app.fabric.microsoft.com/home?experience=fabric) at `https://app.fabric.microsoft.com/home?experience=fabric` in a browser, and sign in with your Fabric credentials.
 1. In the menu bar on the left, select **Workspaces** (the icon looks similar to &#128455;).
-1. Create a new workspace with a name of your choice, selecting a **Fabric**, **Fabric Trial**, or **Power BI Premium** workspace type.
+1. Create a new workspace with a name of your choice, selecting a licensing mode in one of the following workspace types: *Fabric*, *Fabric Trial*, or *Power BI Premium*.
 1. When your new workspace opens, it should be empty.
 
 ## Create a lakehouse with sample data  

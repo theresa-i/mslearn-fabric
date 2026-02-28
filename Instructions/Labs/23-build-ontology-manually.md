@@ -1,28 +1,28 @@
 ---
 lab:
-    title: 'Build an ontology manually in Microsoft Fabric'
+    title: 'Create an ontology (preview) with Fabric IQ'
     module: 'Create ontology with Microsoft Fabric IQ'
 ---
 
-# Build an ontology manually in Microsoft Fabric
+# Create an ontology (preview) with Fabric IQ
 
-In this lab, you'll create a complete Fabric IQ ontology for a healthcare company by manually building each component—entity types, properties, keys, relationships, and data bindings. You'll work with hospital operations data including hospitals, departments, rooms, and patients, plus streaming vital signs monitoring data.
+In this lab, you'll create a complete Fabric IQ ontology for a fictitious healthcare company by manually building each component—entity types, properties, keys, relationships, and data bindings. The sample data includes facilities, departments, rooms, individuals, and medical equipment.
 
 This lab takes approximately **40-45** minutes to complete.
 
-> **Note**: You need a Microsoft Fabric trial to complete this exercise. Sign up for a free [Microsoft Fabric trial](https://learn.microsoft.com/fabric/get-started/fabric-trial).
+> **Note**: You need a [Microsoft Fabric trial](https://learn.microsoft.com/fabric/get-started/fabric-trial) to complete this exercise.
 >
-> You'll also need to enable the following [tenant settings](https://learn.microsoft.com/fabric/iq/ontology/overview-tenant-settings):
+> To complete this exercise, you'll need to enable the following [tenant settings](https://learn.microsoft.com/fabric/iq/ontology/overview-tenant-settings):
 > - **Enable Ontology item (preview)**
 > - **User can create Graph (preview)**
 
 ## Create a workspace
 
-Before working with ontologies in Fabric, create a workspace with your Fabric trial.
+Before working with ontologies in Fabric, you need a workspace with a Fabric capacity.
 
 1. Navigate to the [Microsoft Fabric home page](https://app.fabric.microsoft.com/home?experience=fabric) at `https://app.fabric.microsoft.com/home?experience=fabric` in a browser, and sign in with your Fabric credentials.
 1. In the menu bar on the left, select **Workspaces** (the icon looks similar to &#128455;).
-1. Create a new workspace with a name of your choice, selecting the **Trial** license mode.
+1. Create a new workspace with a name of your choice, selecting a licensing mode in one of the following workspace types: *Fabric*, *Fabric Trial*, or *Power BI Premium*.
 1. When your new workspace opens, it should be empty.
 
 ## Create a lakehouse with sample data
