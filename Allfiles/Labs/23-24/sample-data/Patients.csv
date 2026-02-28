@@ -1,0 +1,6 @@
+PatientId,FirstName,LastName,DateOfBirth,AdmissionDate,CurrentRoomId
+1001,Kerry,Allen,1965-03-15,2026-01-28,1
+1002,Casey,Morgan,1978-07-22,2026-01-30,2
+1003,Elijah,Thompson,1952-11-08,2026-02-01,3
+1004,Priya,Desai,1988-05-19,2026-02-02,7
+1005,Maya,Robinson,1971-09-30,2026-02-02,8
