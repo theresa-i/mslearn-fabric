@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Create an ontology directly from OneLake'
+    title: 'Build an ontology manually in Microsoft Fabric'
     module: 'Create ontology with Microsoft Fabric IQ'
 ---
 
-# Create an ontology directly from OneLake
+# Build an ontology manually in Microsoft Fabric
 
 In this lab, you'll create a complete Fabric IQ ontology for a healthcare company by manually building each component—entity types, properties, keys, relationships, and data bindings. You'll work with hospital operations data including hospitals, departments, rooms, and patients, plus streaming vital signs monitoring data.
 
@@ -37,15 +37,12 @@ Now you'll create a lakehouse and load hospital operations data that will form t
 
 You'll download all sample data files, upload five CSV files to the lakehouse containing entity data for hospitals, departments, rooms, patients, and vital sign monitors, then convert each file to a table.
 
-1. Download all sample CSV files from the GitHub repository: [sample-data folder](https://github.com/MicrosoftLearning/mslearn-fabric/tree/main/Allfiles/Labs/23/sample-data).
-
-   It contains the following sample CSV files:
-   
+1. Download all sample CSV files from the [course repository sample-data folder](../sample-data/):
    - **Hospitals.csv** - Healthcare facilities in your network
    - **Departments.csv** - Hospital departments (ICU, Emergency, Surgical)
    - **Rooms.csv** - Individual rooms within departments
    - **Patients.csv** - Current patients and their room assignments
-   - **VitalSignEquipment.csv** - Monitoring equipment assigned to patients (which patient is being monitored, in which room, and when monitoring started)
+   - **VitalSignEquipment.csv** - Monitoring equipment assigned to patients (which patient is being monitored, and when monitoring started)
    - **VitalSignsReadings.csv** - Actual patient vital sign measurements (heart rate, oxygen levels) collected over time from the monitors
 
 1. Upload the five lakehouse files:
@@ -136,7 +133,7 @@ Follow the same process to create these four additional entity types with their 
 | **Department** | `DepartmentId`<br>`DepartmentName`<br>`HospitalId`<br>`Floor` | Integer<br>String<br>Integer<br>Integer | Static<br>Static<br>Static<br>Static | DepartmentId |
 | **Room** | `RoomId`<br>`RoomNumber`<br>`DepartmentId`<br>`RoomType` | Integer<br>String<br>Integer<br>String | Static<br>Static<br>Static<br>Static | RoomId |
 | **Patient** | `PatientId`<br>`FirstName`<br>`LastName`<br>`DateOfBirth`<br>`AdmissionDate`<br>`CurrentRoomId` | Integer<br>String<br>String<br>DateTime<br>DateTime<br>Integer | Static<br>Static<br>Static<br>Static<br>Static<br>Static | PatientId |
-| **VitalSignEquipment** | `EquipmentId`<br>`PatientId`<br>`RoomId`<br>`EquipmentType`<br>`MonitoringStartDate` | String<br>Integer<br>Integer<br>String<br>DateTime | Static<br>Static<br>Static<br>Static<br>Static | EquipmentId |
+| **VitalSignEquipment** | `EquipmentId`<br>`PatientId`<br>`EquipmentType`<br>`MonitoringStartDate` | String<br>Integer<br>String<br>DateTime | Static<br>Static<br>Static<br>Static | EquipmentId |
 
 You now have five entity types with properties and keys defined.  Verify that the Entity Types pane shows all five entity types, and that properties and entity type key have been defined for each entity:
 
@@ -144,7 +141,7 @@ You now have five entity types with properties and keys defined.  Verify that th
 
 ## Create relationship types
 
-Now, you'll create relationship types that model the healthcare entity relationships and vital sign monitoring: Hospital → Department → Room → Patient, with VitalSignEquipment connecting to both Patient and Room. Follow the detailed steps for the first relationship, then use the reference table to create the remaining four.
+Now, you'll create relationship types that model the healthcare entity relationships and vital sign monitoring: Hospital → Department → Room → Patient, with VitalSignEquipment monitoring Patient. Follow the detailed steps for the first relationship, then use the reference table to create the remaining three.
 
 ### Create Hospital-Department relationship
 
@@ -166,7 +163,6 @@ Follow the same process to create these four additional relationships:
 | **has** | Department | Room | Departments have rooms |
 | **assignedTo** | Patient | Room | Patients are assigned to rooms |
 | **monitors** | VitalSignEquipment | Patient | Vital sign equipment monitors patients |
-| **locatedIn** | VitalSignEquipment | Room | Vital sign equipment is located in rooms |
 
    Your ontology canvas should look similar to the image below. Depending on canvas layout and which entities are selected, you may need to pan or zoom to view all entity types and relationship lines.
 
@@ -215,9 +211,9 @@ The VitalSignEquipment entity requires two data bindings: one for static equipme
 
 **VitalSignEquipment.csv** (Lakehouse - Static attributes):
 ```
-EquipmentId | PatientId | RoomId | EquipmentType           | MonitoringStartDate
-VS-1001     | 1001      | 1      | Continuous Monitoring   | 2026-02-01
-VS-1002     | 1002      | 2      | Continuous Monitoring   | 2026-02-01
+EquipmentId | PatientId | EquipmentType           | MonitoringStartDate
+VS-1001     | 1001      | Continuous Monitoring   | 2026-02-01
+VS-1002     | 1002      | Continuous Monitoring   | 2026-02-01
 ```
 
 **VitalSignsReadings.csv** (Eventhouse - Time-series measurements):
@@ -228,7 +224,7 @@ ReadingId | EquipmentId | Timestamp            | HeartRate | OxygenSaturation | 
 4         | VS-1002     | 2026-02-02T08:00:00Z | 92        | 99               | 14
 ```
 
-Notice the time-series data only has measurements and EquipmentId—not patient, room, or equipment type. The static binding creates the equipment entities with full context (VS-1001 is Continuous Monitoring equipment tracking Patient 1001 in Room 1), and the time-series binding attaches streaming measurements to those entities using EquipmentId as the matching key.
+Notice the time-series data only has measurements and EquipmentId—not patient or equipment type. The static binding creates the equipment entities with full context (VS-1001 is Continuous Monitoring equipment tracking Patient 1001), and the time-series binding attaches streaming measurements to those entities using EquipmentId as the matching key.
 
 #### Bind static monitor reference data
 
@@ -241,7 +237,6 @@ Notice the time-series data only has measurements and EquipmentId—not patient,
 1. Map the properties to columns (should auto-map):
    - EquipmentId → EquipmentId
    - PatientId → PatientId
-   - RoomId → RoomId
    - EquipmentType → EquipmentType
    - MonitoringStartDate → MonitoringStartDate
 1. Select **Save**.
@@ -319,9 +314,8 @@ Follow the same process for the remaining four relationships. For each: select t
 | **has** (Department → Room) | LamnaHealthcareLH > dbo > rooms | Department: DepartmentId | Room: RoomId |
 | **assignedTo** (Patient → Room) | LamnaHealthcareLH > dbo > patients | Patient: PatientId | Room: CurrentRoomId |
 | **monitors** (VitalSignEquipment → Patient) | LamnaHealthcareLH > dbo > vitalsignequipment | VitalSignEquipment: EquipmentId | Patient: PatientId |
-| **locatedIn** (VitalSignEquipment → Room) | LamnaHealthcareLH > dbo > vitalsignequipment | VitalSignEquipment: EquipmentId | Room: RoomId |
 
-All relationships now have source data configured. Your ontology understands the complete healthcare data model: hospitals contain departments, departments contain rooms, patients are assigned to rooms, and vital sign equipment monitors patients in specific rooms.
+All relationships now have source data configured. Your ontology understands the complete healthcare data model: hospitals contain departments, departments contain rooms, patients are assigned to rooms, and vital sign equipment monitors patients.
 
 ## Verify the ontology
 
