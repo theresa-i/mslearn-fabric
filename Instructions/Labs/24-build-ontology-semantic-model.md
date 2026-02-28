@@ -35,7 +35,7 @@ Now you'll create a lakehouse and load hospital operations data that will form t
 
 You'll upload five CSV files to the lakehouse containing entity data for hospitals, departments, rooms, patients, and vital sign monitors, then convert each file to a Delta table.
 
-1. Download all sample CSV files from the [course repository sample-data folder](../sample-data/):
+1. Download all sample CSV files from the [sample-data folder](../../Allfiles/Labs/23-24/sample-data/):
    - **Hospitals.csv** - Healthcare facilities in your network
    - **Departments.csv** - Hospital departments (ICU, Emergency, Surgical)
    - **Rooms.csv** - Individual rooms within departments
