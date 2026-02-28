@@ -8,7 +8,7 @@ lab:
 
 In this lab, you'll create a complete Fabric IQ ontology for a fictitious healthcare company by manually building each component—entity types, properties, keys, relationships, and data bindings. The sample data includes facilities, departments, rooms, individuals, and medical equipment.
 
-This lab takes approximately **40-45** minutes to complete.
+This lab takes approximately **40** minutes to complete.
 
 > **Note**: You need a [Microsoft Fabric trial](https://learn.microsoft.com/fabric/get-started/fabric-trial) to complete this exercise. You'll also need to enable the following [tenant settings](https://learn.microsoft.com/fabric/iq/ontology/overview-tenant-settings): **Enable Ontology item (preview)** and **User can create Graph (preview)**.
 

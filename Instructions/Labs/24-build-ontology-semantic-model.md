@@ -10,7 +10,7 @@ There are two ways to build a Fabric IQ ontology: manually, by creating each ent
 
 In this lab, you'll load sample data for a fictitious healthcare company into a lakehouse and eventhouse, build a semantic model on top of it, and then generate an ontology from that model. The sample data includes facilities, departments, rooms, individuals, and medical equipment. Each table in the semantic model becomes an entity type, and each relationship between tables becomes a relationship type in the ontology.
 
-This lab takes approximately **35-40** minutes to complete.
+This lab takes approximately **45** minutes to complete.
 
 > **Note**: You need a [Microsoft Fabric trial](https://learn.microsoft.com/fabric/get-started/fabric-trial) to complete this exercise. You'll also need to enable the following [tenant settings](https://learn.microsoft.com/fabric/iq/ontology/overview-tenant-settings): **Enable Ontology item (preview)** and **User can create Graph (preview)**.
 
